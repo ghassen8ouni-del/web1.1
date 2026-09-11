@@ -1,0 +1,1907 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ozita Immobilière</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Amiri:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #f39c12;
+      --primary-hover: #d68910;
+      --dark-bg: #1c1c1c;
+      --text-dark: #2c2c2c;
+      --text-muted: #777777;
+      --light-gray: #f8f9fa;
+      --border-color: #e5e5e5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      color: var(--text-dark);
+      background-color: #fff;
+    }
+
+    /* ---------------- TOP BAR ---------------- */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 8%;
+      background: #fff;
+    }
+
+    .top-logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+    }
+
+    .brand-svg-logo {
+      width: 60px;
+      height: 60px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .top-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-logo-text .title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111;
+      letter-spacing: 1px;
+    }
+
+    .top-logo-text .subtitle {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 3px;
+    }
+
+    .top-logo-text .subtitle::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: #111;
+    }
+
+    .top-contact {
+      text-align: right;
+      font-size: 12px;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    .top-contact a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    .top-contact a:hover {
+      color: var(--primary-color);
+    }
+
+    /* ---------------- NAVBAR ---------------- */
+    .nav-bar {
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #eaeaea;
+      padding: 12px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #111;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-left-brand .brand-svg-logo {
+      width: 30px;
+      height: 30px;
+    }
+
+    .nav-left-brand span {
+      color: var(--primary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .btn-admin-nav {
+      background: #111;
+      color: #fff !important;
+      padding: 6px 14px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .btn-admin-nav:hover {
+      background: var(--primary-color) !important;
+      color: #fff !important;
+    }
+
+    /* ---------------- HERO BANNER SLIDER ---------------- */
+    .hero {
+      position: relative;
+      height: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out, transform 6s ease-out;
+      transform: scale(1);
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+
+    .hero-content h1 span {
+      color: var(--primary-color);
+    }
+
+    .hero-content p {
+      font-size: 17px;
+      font-weight: 500;
+      margin-top: 8px;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.6);
+    }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .hero-dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .hero-dot.active {
+      background: var(--primary-color);
+      transform: scale(1.25);
+      border-color: #fff;
+    }
+
+    /* ---------------- SEARCH / FILTER SECTION ---------------- */
+    .search-section {
+      background: var(--dark-bg);
+      color: #fff;
+      padding: 30px 8%;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 35px;
+    }
+
+    .search-label {
+      flex: 0 0 140px;
+    }
+
+    .search-label span {
+      font-size: 11px;
+      text-transform: capitalize;
+      color: #aaa;
+    }
+
+    .search-label h3 {
+      font-size: 24px;
+      line-height: 1.1;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .search-label h3 span {
+      color: var(--primary-color);
+      font-size: 24px;
+      display: block;
+    }
+
+    .search-fields {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .input-box {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .input-box label {
+      font-size: 10px;
+      color: #aaa;
+    }
+
+    .input-box select,
+    .input-box input {
+      height: 34px;
+      padding: 0 10px;
+      border: 1px solid #444;
+      background: #fff;
+      color: #333;
+      font-size: 11px;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .search-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding-left: 175px;
+    }
+
+    .reset-btn {
+      color: #aaa;
+      font-size: 11px;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .reset-btn:hover {
+      color: var(--primary-color);
+    }
+
+    .btn-search {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 10px 28px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-search:hover {
+      background: var(--primary-hover);
+    }
+
+    /* ---------------- SECTION BIENS ---------------- */
+    .coups-de-coeur {
+      padding: 55px 8%;
+      text-align: center;
+    }
+
+    .coups-de-coeur h2 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #111;
+      text-transform: uppercase;
+    }
+
+    .coups-de-coeur p {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 4px;
+      margin-bottom: 40px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      text-align: left;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .card-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      gap: 8px;
+    }
+
+    .card:hover .card-hover-overlay {
+      opacity: 1;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .card-tags {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .card-badge {
+      background: #eee;
+      color: #555;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    .card-badge.rent {
+      background: #e1f5fe;
+      color: #0288d1;
+    }
+
+    .card-ref {
+      font-size: 11px;
+      color: #999;
+      font-weight: 600;
+    }
+
+    .card-price {
+      color: var(--primary-color);
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    #no-results {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 40px 20px;
+      font-size: 16px;
+      color: #777;
+      background: #fafafa;
+      border: 1px dashed #ccc;
+      border-radius: 4px;
+    }
+
+    /* ---------------- MODAL DETAILS ---------------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-content {
+      background: #fff;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 8px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      font-size: 20px;
+      color: #444;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .modal-gallery {
+      padding: 20px 20px 0 20px;
+    }
+
+    .modal-main-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .modal-thumbnails {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .modal-thumbnails img {
+      width: 80px;
+      height: 55px;
+      object-fit: cover;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0.6;
+      border: 2px solid transparent;
+      flex-shrink: 0;
+    }
+
+    .modal-thumbnails img.active,
+    .modal-thumbnails img:hover {
+      opacity: 1;
+      border-color: var(--primary-color);
+    }
+
+    .modal-info {
+      padding: 24px;
+    }
+
+    .modal-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .modal-title-box h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .modal-title-box p {
+      font-size: 13px;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .modal-price-box {
+      text-align: right;
+    }
+
+    .modal-price-box .price {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+
+    .modal-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      background: #fdfbf7;
+      border: 1px solid #fae5cb;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .feature-item i {
+      font-size: 18px;
+      color: var(--primary-color);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .feature-item span {
+      font-size: 11px;
+      color: #777;
+      display: block;
+    }
+
+    .feature-item strong {
+      font-size: 13px;
+      color: #222;
+    }
+
+    .modal-desc-box h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .modal-desc-box p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 15px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+
+    .btn-contact {
+      flex: 1;
+      padding: 12px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 13px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebc59;
+    }
+
+    .btn-phone {
+      background: var(--dark-bg);
+      color: #fff;
+    }
+
+    .btn-phone:hover {
+      background: #333;
+    }
+
+    /* ---------------- ADMIN MODAL & TABS ---------------- */
+    .admin-modal-content {
+      max-width: 960px;
+      padding: 25px;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .admin-header h3 {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .admin-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .admin-tab-btn {
+      padding: 10px 18px;
+      background: #eee;
+      border: none;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 12.5px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .admin-tab-btn.active {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .admin-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 70px;
+    }
+
+    .upload-zone {
+      border: 2px dashed #bbb;
+      padding: 22px;
+      text-align: center;
+      border-radius: 6px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--primary-color);
+      background: #fff8ef;
+    }
+
+    .upload-zone i {
+      font-size: 32px;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .preview-container {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .preview-box {
+      position: relative;
+      width: 80px;
+      height: 60px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-box .remove-btn {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: rgba(231, 76, 60, 0.85);
+      color: #fff;
+      border: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-save-item {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .btn-save-item:hover {
+      background: var(--primary-hover);
+    }
+
+    .admin-table-wrapper {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .admin-table th, 
+    .admin-table td {
+      border: 1px solid #eee;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .admin-table th {
+      background: #f9f9f9;
+      font-weight: 700;
+    }
+
+    .admin-table img {
+      width: 50px;
+      height: 35px;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .btn-table {
+      padding: 5px 9px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .btn-edit {
+      background: #3498db;
+      color: #fff;
+    }
+
+    .btn-delete {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    /* Tab Gestion Slider */
+    .slider-admin-zone {
+      padding: 10px 0;
+    }
+
+    .slider-photos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .slider-photo-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      height: 130px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .slider-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-photo-card .btn-del-slide {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(231, 76, 60, 0.9);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 8px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .slider-photo-card .btn-del-slide:hover {
+      background: #c0392b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 992px) {
+      .search-container {
+        flex-direction: column;
+      }
+      .search-fields {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+      }
+      .search-footer {
+        padding-left: 0;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .modal-features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .modal-main-img {
+        height: 250px;
+      }
+      .admin-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .slider-photos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="#" class="top-logo">
+      <svg class="brand-svg-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="topArcLeft" d="M 24 96 A 76 76 0 0 1 95 24" fill="none"/>
+          <path id="topArcRight" d="M 105 24 A 76 76 0 0 1 176 96" fill="none"/>
+          <path id="bottomArcLeft" d="M 25 104 A 75 75 0 0 0 95 175" fill="none"/>
+          <path id="bottomArcRight" d="M 105 175 A 75 75 0 0 0 175 104" fill="none"/>
+        </defs>
+        <path d="M 12 100 A 88 88 0 0 1 188 100 L 168 100 A 68 68 0 0 0 32 100 Z" fill="#111111"/>
+        <line x1="100" y1="12" x2="100" y2="32" stroke="#ffffff" stroke-width="4"/>
+        <text font-family="'Montserrat', sans-serif" font-weight="900" font-size="16" fill="#ffffff" letter-spacing="4">
+          <textPath href="#topArcLeft" startOffset="50%" text-anchor="middle">OZITA</textPath>
+        </text>
+        <text font-family="'Montserrat', sans-serif" font-weight="900" font-size="13" fill="#ffffff" letter-spacing="2">
+          <textPath href="#topArcRight" startOffset="50%" text-anchor="middle">IMMOBILIERE</textPath>
+        </text>
+        <path d="M 12 100 A 88 88 0 0 0 188 100 L 168 100 A 68 68 0 0 1 32 100 Z" fill="#f39c12"/>
+        <polygon points="56,155 56,128 88,96 88,188 56,168" fill="#f39c12"/>
+        <polygon points="144,155 144,128 112,96 112,188 144,168" fill="#f39c12"/>
+        <polygon points="88,60 100,52 112,68 112,192 88,192" fill="#111111"/>
+        <text font-family="'Amiri', serif" font-weight="bold" font-size="20" fill="#ffffff">
+          <textPath href="#bottomArcLeft" startOffset="45%" text-anchor="middle">أوزيتا</textPath>
+        </text>
+        <text font-family="'Amiri', serif" font-weight="bold" font-size="20" fill="#ffffff">
+          <textPath href="#bottomArcRight" startOffset="55%" text-anchor="middle">عقارية</textPath>
+        </text>
+      </svg>
+      <div class="top-logo-text">
+        <span class="title">OZITA</span>
+        <span class="subtitle">IMMOBILIÈRE</span>
+      </div>
+    </a>
+    <div class="top-contact">
+      <div><strong>OZITA IMMOBILIÈRE</strong></div>
+      <div>Sousse, Tunisie</div>
+      <div><i class="fa-solid fa-phone"></i> +216 73 000 000</div>
+      <div><i class="fa-regular fa-envelope"></i> <a href="mailto:contact@ozita-immobilier.com">contact@ozita-immobilier.com</a></div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="nav-bar">
+    <div class="nav-left-brand">
+      <svg class="brand-svg-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 12 100 A 88 88 0 0 1 188 100 L 168 100 A 68 68 0 0 0 32 100 Z" fill="#111"/>
+        <path d="M 12 100 A 88 88 0 0 0 188 100 L 168 100 A 68 68 0 0 1 32 100 Z" fill="#f39c12"/>
+        <polygon points="56,155 56,128 88,96 88,188 56,168" fill="#f39c12"/>
+        <polygon points="144,155 144,128 112,96 112,188 144,168" fill="#f39c12"/>
+        <polygon points="88,60 100,52 112,68 112,192 88,192" fill="#111"/>
+      </svg>
+      OZITA <span>IMMOBILIÈRE</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#" class="active">ACCUEIL</a></li>
+      <li><a href="#">ANNONCES</a></li>
+      <li><a href="#">PRÉSENTATION</a></li>
+      <li><a href="#">ESTIMATION</a></li>
+      <li><a href="#">CONTACT</a></li>
+      <li>
+        <a href="javascript:void(0)" id="nav-btn-admin" class="btn-admin-nav">
+          <i class="fa-solid fa-lock"></i> Espace Admin
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-right-icon">
+      <i class="fa-solid fa-heart"></i>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION AVEC SLIDER DYNAMIQUE -->
+  <section class="hero" id="hero-slider-section">
+    <div class="hero-slides" id="hero-slides-container"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>OZITA <span>IMMOBILIÈRE</span></h1>
+      <p>Votre partenaire de confiance pour l'immobilier d'exception</p>
+    </div>
+    <div class="hero-dots" id="hero-dots"></div>
+  </section>
+
+  <!-- SEARCH / FILTERS BAR -->
+  <section class="search-section">
+    <div class="search-container">
+      <div class="search-label">
+        <span>Trouver</span>
+        <h3>Votre<br><span>Bien</span></h3>
+      </div>
+
+      <div class="search-fields">
+        <div class="input-box">
+          <label>Achat / Location</label>
+          <select id="filter-action">
+            <option value="">Achat / Location</option>
+            <option value="achat">Achat</option>
+            <option value="location">Location</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label>Type</label>
+          <select id="filter-type">
+            <option value="">Tous les types</option>
+            <option value="villa">Villa</option>
+            <option value="appartement">Appartement</option>
+            <option value="terrain">Terrain</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label>Secteur</label>
+          <select id="filter-secteur">
+            <option value="">Tous les secteurs</option>
+            <option value="kantaoui">Kantaoui</option>
+            <option value="sahloul">Sahloul</option>
+            <option value="hammam sousse">Hammam Sousse</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label>Référence</label>
+          <input type="text" id="filter-ref" placeholder="Ex: OZ-101">
+        </div>
+
+        <div class="input-box">
+          <label>Budget min (TND)</label>
+          <input type="number" id="filter-price-min" placeholder="Min TND">
+        </div>
+
+        <div class="input-box">
+          <label>Budget max (TND)</label>
+          <input type="number" id="filter-price-max" placeholder="Max TND">
+        </div>
+
+        <div class="input-box">
+          <label>Surface Min (m²)</label>
+          <input type="number" id="filter-surf-min" placeholder="Min m²">
+        </div>
+
+        <div class="input-box">
+          <label>Surface Max (m²)</label>
+          <input type="number" id="filter-surf-max" placeholder="Max m²">
+        </div>
+      </div>
+    </div>
+
+    <div class="search-footer">
+      <button class="reset-btn" id="btn-reset">Réinitialiser les filtres</button>
+      <button class="btn-search" id="btn-search">Rechercher</button>
+    </div>
+  </section>
+
+  <!-- SECTION BIENS -->
+  <section class="coups-de-coeur">
+    <h2>Nos Biens Disponibles</h2>
+    <p>Cliquez sur un bien pour voir tous les détails et les photos</p>
+
+    <div class="cards-grid" id="cards-grid"></div>
+    <div id="no-results">
+      <i class="fa-solid fa-circle-exclamation" style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px; display:block;"></i>
+      Aucun bien ne correspond à vos critères de recherche.
+    </div>
+  </section>
+
+  <!-- ================= MODAL DETAILS DU BIEN ================= -->
+  <div class="modal-overlay" id="property-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="modal-gallery">
+        <img src="" alt="Property" class="modal-main-img" id="modal-main-img">
+        <div class="modal-thumbnails" id="modal-thumbnails"></div>
+      </div>
+
+      <div class="modal-info">
+        <div class="modal-header-top">
+          <div class="modal-title-box">
+            <h2 id="modal-title">Titre</h2>
+            <p id="modal-location"><i class="fa-solid fa-location-dot" style="color:var(--primary-color)"></i> Sousse</p>
+          </div>
+          <div class="modal-price-box">
+            <div class="price" id="modal-price">0 TND</div>
+            <span id="modal-ref-badge" style="font-size: 11px; color:#888;"></span>
+          </div>
+        </div>
+
+        <div class="modal-features">
+          <div class="feature-item">
+            <i class="fa-solid fa-maximize"></i>
+            <span>Surface</span>
+            <strong id="modal-surface">-</strong>
+          </div>
+          <div class="feature-item">
+            <i class="fa-solid fa-bed"></i>
+            <span>Chambres</span>
+            <strong id="modal-rooms">-</strong>
+          </div>
+          <div class="feature-item">
+            <i class="fa-solid fa-bath"></i>
+            <span>Salles de bain</span>
+            <strong id="modal-baths">-</strong>
+          </div>
+          <div class="feature-item">
+            <i class="fa-solid fa-tag"></i>
+            <span>Transaction</span>
+            <strong id="modal-action-text">-</strong>
+          </div>
+        </div>
+
+        <div class="modal-desc-box">
+          <h4>Description</h4>
+          <p id="modal-description">-</p>
+        </div>
+
+        <div class="modal-actions">
+          <a href="#" id="modal-btn-whatsapp" target="_blank" class="btn-contact btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> Contacter par WhatsApp
+          </a>
+          <a href="tel:+21673000000" class="btn-contact btn-phone">
+            <i class="fa-solid fa-phone"></i> Appeler l'Agence
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL ADMIN DASHBOARD ================= -->
+  <div class="modal-overlay" id="admin-modal">
+    <div class="modal-content admin-modal-content">
+      <button class="modal-close" id="admin-modal-close"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="admin-header">
+        <h3><i class="fa-solid fa-gauge-high" style="color:var(--primary-color)"></i> Espace Admin - Ozita Immobilière</h3>
+      </div>
+
+      <!-- TABS DE NAVIGATION DANS L'ADMIN -->
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" id="tab-btn-form"><i class="fa-solid fa-plus-circle"></i> Ajouter / Modifier un bien</button>
+        <button class="admin-tab-btn" id="tab-btn-list"><i class="fa-solid fa-list"></i> Liste des biens</button>
+        <button class="admin-tab-btn" id="tab-btn-slider"><i class="fa-solid fa-images"></i> Photos du Slider (Accueil)</button>
+      </div>
+
+      <!-- TAB 1: FORMULAIRE BIEN -->
+      <div id="admin-tab-content-form">
+        <form id="property-form">
+          <input type="hidden" id="item-id">
+          <div class="admin-form-grid">
+            <div class="form-group">
+              <label>Référence :</label>
+              <input type="text" id="item-ref" placeholder="Ex: OZ-105" required>
+            </div>
+            <div class="form-group">
+              <label>Titre de l'annonce :</label>
+              <input type="text" id="item-title" placeholder="Ex: Belle Villa avec Piscine" required>
+            </div>
+            <div class="form-group">
+              <label>Type de transaction :</label>
+              <select id="item-action" required>
+                <option value="achat">Achat</option>
+                <option value="location">Location</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Type de bien :</label>
+              <select id="item-type" required>
+                <option value="villa">Villa</option>
+                <option value="appartement">Appartement</option>
+                <option value="terrain">Terrain</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Prix (en TND) :</label>
+              <input type="number" id="item-price" placeholder="Ex: 450000" required>
+            </div>
+            <div class="form-group">
+              <label>Surface (en m²) :</label>
+              <input type="number" id="item-surface" placeholder="Ex: 180" required>
+            </div>
+            <div class="form-group">
+              <label>Secteur / Emplacement :</label>
+              <input type="text" id="item-location" placeholder="Ex: Kantaoui, Sousse" required>
+            </div>
+            <div class="form-group">
+              <label>Chambres :</label>
+              <input type="text" id="item-rooms" placeholder="Ex: 3 Chambres ou S+2">
+            </div>
+            <div class="form-group">
+              <label>Salles de bain :</label>
+              <input type="text" id="item-baths" placeholder="Ex: 2 SDB">
+            </div>
+
+            <!-- Upload photos pour le bien -->
+            <div class="form-group full">
+              <label>Photos du bien :</label>
+              <div class="upload-zone" onclick="document.getElementById('property-file-input').click()">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <div style="font-weight:700; font-size:13px; margin-top:4px;">Cliquez ici pour choisir des photos depuis votre appareil</div>
+                <small style="color:#888;">(Sélectionnez plusieurs photos à la fois)</small>
+                <input type="file" id="property-file-input" multiple accept="image/*" style="display:none;">
+              </div>
+              <div class="preview-container" id="property-preview-container"></div>
+            </div>
+
+            <div class="form-group full">
+              <label>Description complète :</label>
+              <textarea id="item-desc" placeholder="Détails du bien..." required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-save-item" id="btn-save-submit">Enregistrer l'annonce</button>
+          <button type="button" class="btn-table" id="btn-cancel-edit" style="display:none; margin-left:10px; padding:12px 18px;">Annuler</button>
+        </form>
+      </div>
+
+      <!-- TAB 2: LISTE DES BIENS -->
+      <div id="admin-tab-content-list" style="display:none;">
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Réf</th>
+                <th>Titre</th>
+                <th>Type</th>
+                <th>Prix</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: GESTION DES PHOTOS DU SLIDER DU MILIEU (NOUVELLE PARTIE DANS L'ADMIN) -->
+      <div id="admin-tab-content-slider" style="display:none;">
+        <div class="slider-admin-zone">
+          <h4 style="font-size:16px; margin-bottom:6px; color:#111;">Photos qui défilent en haut (Slider du Milieu)</h4>
+          <p style="font-size:12px; color:#666; margin-bottom:15px;">Uploadez de nouvelles images pour le grand bandeau de la page d'accueil ou supprimez celles existantes.</p>
+          
+          <!-- Upload direct pour le slider -->
+          <div class="upload-zone" onclick="document.getElementById('admin-slider-file-input').click()">
+            <i class="fa-solid fa-panorama"></i>
+            <div style="font-weight:700; font-size:13px; margin-top:4px;">+ Cliquez ici pour ajouter une photo au Slider</div>
+            <small style="color:#888;">(L'image s'ajoute automatiquement au diaporama)</small>
+            <input type="file" id="admin-slider-file-input" accept="image/*" style="display:none;">
+          </div>
+
+          <!-- Grille des photos existantes dans le slider -->
+          <div class="slider-photos-grid" id="slider-photos-grid"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT GLOBAL ================= -->
+  <script>
+    // ----------------- 1. DONNÉES DU SLIDER -----------------
+    const defaultHeroImages = [
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80'
+    ];
+
+    function loadHeroImages() {
+      const saved = localStorage.getItem('ozita_slider_images');
+      return saved ? JSON.parse(saved) : defaultHeroImages;
+    }
+
+    function saveHeroImages(imgs) {
+      localStorage.setItem('ozita_slider_images', JSON.stringify(imgs));
+      initHeroSlider();
+      renderSliderAdminGrid();
+    }
+
+    let heroImages = loadHeroImages();
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    function initHeroSlider() {
+      const container = document.getElementById('hero-slides-container');
+      const dotsContainer = document.getElementById('hero-dots');
+      container.innerHTML = '';
+      dotsContainer.innerHTML = '';
+
+      if (heroImages.length === 0) {
+        heroImages = [...defaultHeroImages];
+      }
+
+      heroImages.forEach((url, i) => {
+        const slide = document.createElement('div');
+        slide.className = `hero-slide ${i === 0 ? 'active' : ''}`;
+        slide.style.backgroundImage = `url('${url}')`;
+        container.appendChild(slide);
+
+        const dot = document.createElement('span');
+        dot.className = `hero-dot ${i === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          pauseSlider();
+          startSlider();
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      currentSlide = 0;
+    }
+
+    function goToSlide(index) {
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.hero-dot');
+      if (slides.length === 0) return;
+
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function startSlider() {
+      if (!slideInterval) {
+        slideInterval = setInterval(nextSlide, 4000);
+      }
+    }
+
+    function pauseSlider() {
+      clearInterval(slideInterval);
+      slideInterval = null;
+    }
+
+    const heroSliderSection = document.getElementById('hero-slider-section');
+    heroSliderSection.addEventListener('mouseenter', pauseSlider);
+    heroSliderSection.addEventListener('mouseleave', startSlider);
+
+    initHeroSlider();
+    startSlider();
+
+    // ----------------- 2. DONNÉES DES BIENS -----------------
+    const initialProperties = [
+      {
+        id: "1",
+        ref: "OZ-101",
+        title: "Superbe Villa Contemporaine",
+        action: "achat",
+        type: "villa",
+        price: 680000,
+        secteur: "kantaoui",
+        location: "Port El Kantaoui, Sousse",
+        surface: 240,
+        rooms: "4 Chambres",
+        baths: "3 SDB",
+        desc: "Magnifique villa moderne située dans un quartier calme et sécurisé à Kantaoui avec piscine privée.",
+        images: [
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+          "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80"
+        ]
+      },
+      {
+        id: "2",
+        ref: "OZ-102",
+        title: "Demeure de Grand Prestige",
+        action: "achat",
+        type: "villa",
+        price: 1150000,
+        secteur: "sahloul",
+        location: "Sahloul 4, Sousse",
+        surface: 420,
+        rooms: "6 Suites",
+        baths: "5 SDB",
+        desc: "Propriété d'exception bâtie avec des matériaux nobles, marbre blanc, et grand jardin.",
+        images: [
+          "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80"
+        ]
+      },
+      {
+        id: "3",
+        ref: "OZ-103",
+        title: "Penthouse Luxueux avec Vue Mer",
+        action: "location",
+        type: "appartement",
+        price: 2500,
+        secteur: "hammam sousse",
+        location: "Hammam Sousse",
+        surface: 140,
+        rooms: "S+3",
+        baths: "2 SDB",
+        desc: "Appartement de standing avec vue panoramique sur la mer Méditerranée et terrasse de 50m².",
+        images: [
+          "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80"
+        ]
+      }
+    ];
+
+    function loadProperties() {
+      const saved = localStorage.getItem('ozita_properties');
+      return saved ? JSON.parse(saved) : initialProperties;
+    }
+
+    function saveProperties(data) {
+      localStorage.setItem('ozita_properties', JSON.stringify(data));
+      renderCards();
+      renderAdminTable();
+    }
+
+    let propertiesList = loadProperties();
+
+    const cardsGrid = document.getElementById('cards-grid');
+    function renderCards() {
+      cardsGrid.innerHTML = '';
+      propertiesList.forEach(item => {
+        const isRent = item.action.toLowerCase() === 'location';
+        const displayPrice = isRent ? `${item.price.toLocaleString()} TND / mois` : `${item.price.toLocaleString()} TND`;
+        const firstImg = item.images && item.images.length > 0 ? item.images[0] : 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80';
+
+        const card = document.createElement('div');
+        card.className = 'card property-item';
+        card.setAttribute('data-id', item.id);
+        card.setAttribute('data-action', item.action);
+        card.setAttribute('data-type', item.type);
+        card.setAttribute('data-secteur', item.location || item.secteur);
+        card.setAttribute('data-ref', item.ref);
+        card.setAttribute('data-price', item.price);
+        card.setAttribute('data-surface', item.surface);
+
+        card.innerHTML = `
+          <div class="card-img-wrapper">
+            <img src="${firstImg}" alt="${item.title}">
+            <div class="card-hover-overlay">
+              <i class="fa-solid fa-eye"></i> Voir la propriété
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-badge ${isRent ? 'rent' : ''}">${item.action} • ${item.location || item.secteur}</span>
+              <span class="card-ref">Réf: ${item.ref}</span>
+            </div>
+            <div class="card-price">${displayPrice}</div>
+            <div class="card-title">${item.title}</div>
+            <div class="card-desc">${item.rooms || ''} • ${item.surface} m² • ${item.desc.substring(0, 60)}...</div>
+          </div>
+        `;
+
+        card.addEventListener('click', () => openPropertyModal(item.id));
+        cardsGrid.appendChild(card);
+      });
+    }
+
+    // ----------------- 3. FILTRES RECHERCHE -----------------
+    const btnSearch = document.getElementById('btn-search');
+    const btnReset = document.getElementById('btn-reset');
+    const noResults = document.getElementById('no-results');
+
+    function filterProperties() {
+      const action = document.getElementById('filter-action').value.toLowerCase().trim();
+      const type = document.getElementById('filter-type').value.toLowerCase().trim();
+      const secteur = document.getElementById('filter-secteur').value.toLowerCase().trim();
+      const ref = document.getElementById('filter-ref').value.toLowerCase().trim();
+      const priceMin = parseFloat(document.getElementById('filter-price-min').value) || 0;
+      const priceMax = parseFloat(document.getElementById('filter-price-max').value) || Infinity;
+      const surfMin = parseFloat(document.getElementById('filter-surf-min').value) || 0;
+      const surfMax = parseFloat(document.getElementById('filter-surf-max').value) || Infinity;
+
+      let count = 0;
+      const cards = document.querySelectorAll('.property-item');
+
+      cards.forEach(card => {
+        const itemAction = card.getAttribute('data-action').toLowerCase();
+        const itemType = card.getAttribute('data-type').toLowerCase();
+        const itemSecteur = card.getAttribute('data-secteur').toLowerCase();
+        const itemRef = card.getAttribute('data-ref').toLowerCase();
+        const itemPrice = parseFloat(card.getAttribute('data-price'));
+        const itemSurf = parseFloat(card.getAttribute('data-surface'));
+
+        const matchAction = !action || itemAction === action;
+        const matchType = !type || itemType === type;
+        const matchSecteur = !secteur || itemSecteur.includes(secteur);
+        const matchRef = !ref || itemRef.includes(ref);
+        const matchPrice = itemPrice >= priceMin && itemPrice <= priceMax;
+        const matchSurf = itemSurf >= surfMin && itemSurf <= surfMax;
+
+        if (matchAction && matchType && matchSecteur && matchRef && matchPrice && matchSurf) {
+          card.style.display = 'block';
+          count++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = (count === 0) ? 'block' : 'none';
+      document.querySelector('.coups-de-coeur').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    btnSearch.addEventListener('click', filterProperties);
+    btnReset.addEventListener('click', () => {
+      document.getElementById('filter-action').value = '';
+      document.getElementById('filter-type').value = '';
+      document.getElementById('filter-secteur').value = '';
+      document.getElementById('filter-ref').value = '';
+      document.getElementById('filter-price-min').value = '';
+      document.getElementById('filter-price-max').value = '';
+      document.getElementById('filter-surf-min').value = '';
+      document.getElementById('filter-surf-max').value = '';
+      document.querySelectorAll('.property-item').forEach(c => c.style.display = 'block');
+      noResults.style.display = 'none';
+    });
+
+    // ----------------- 4. MODAL VISITE -----------------
+    const propModal = document.getElementById('property-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalMainImg = document.getElementById('modal-main-img');
+    const modalThumbnails = document.getElementById('modal-thumbnails');
+
+    function openPropertyModal(id) {
+      const data = propertiesList.find(p => p.id.toString() === id.toString());
+      if (!data) return;
+
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-location').innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--primary-color)"></i> ${data.location || data.secteur}`;
+      const isRent = data.action === 'location';
+      document.getElementById('modal-price').textContent = isRent ? `${data.price.toLocaleString()} TND / mois` : `${data.price.toLocaleString()} TND`;
+      document.getElementById('modal-ref-badge').textContent = `Réf: ${data.ref}`;
+      document.getElementById('modal-surface').textContent = `${data.surface} m²`;
+      document.getElementById('modal-rooms').textContent = data.rooms || '-';
+      document.getElementById('modal-baths').textContent = data.baths || '-';
+      document.getElementById('modal-action-text').textContent = data.action === 'location' ? 'À Louer' : 'À Vendre';
+      document.getElementById('modal-description').textContent = data.desc;
+
+      const waMsg = encodeURIComponent(`Bonjour Ozita Immobilière, je suis intéressé par le bien [${data.title}] (Réf: ${data.ref}).`);
+      document.getElementById('modal-btn-whatsapp').href = `https://wa.me/21673000000?text=${waMsg}`;
+
+      modalMainImg.src = data.images[0] || '';
+      modalThumbnails.innerHTML = '';
+      data.images.forEach((imgSrc, index) => {
+        const thumb = document.createElement('img');
+        thumb.src = imgSrc;
+        if (index === 0) thumb.classList.add('active');
+        thumb.addEventListener('click', () => {
+          modalMainImg.src = imgSrc;
+          document.querySelectorAll('.modal-thumbnails img').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+        modalThumbnails.appendChild(thumb);
+      });
+
+      propModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    modalClose.addEventListener('click', () => {
+      propModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // ----------------- 5. ESPACE ADMIN COMPLET -----------------
+    const navBtnAdmin = document.getElementById('nav-btn-admin');
+    const adminModal = document.getElementById('admin-modal');
+    const adminModalClose = document.getElementById('admin-modal-close');
+
+    const tabBtnForm = document.getElementById('tab-btn-form');
+    const tabBtnList = document.getElementById('tab-btn-list');
+    const tabBtnSlider = document.getElementById('tab-btn-slider');
+
+    const formTabContent = document.getElementById('admin-tab-content-form');
+    const listTabContent = document.getElementById('admin-tab-content-list');
+    const sliderTabContent = document.getElementById('admin-tab-content-slider');
+
+    const propForm = document.getElementById('property-form');
+    const btnCancelEdit = document.getElementById('btn-cancel-edit');
+    const btnSaveSubmit = document.getElementById('btn-save-submit');
+    const adminTableBody = document.getElementById('admin-table-body');
+    const propertyFileInput = document.getElementById('property-file-input');
+    const propertyPreviewContainer = document.getElementById('property-preview-container');
+
+    const adminSliderFileInput = document.getElementById('admin-slider-file-input');
+    const sliderPhotosGrid = document.getElementById('slider-photos-grid');
+
+    let currentUploadedImages = [];
+
+    // Authentification Admin
+    navBtnAdmin.addEventListener('click', () => {
+      const pass = prompt('Entrez le mot de passe administrateur :');
+      if (pass === 'admin123') {
+        adminModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        renderAdminTable();
+        renderSliderAdminGrid();
+      } else if (pass !== null) {
+        alert('Mot de passe incorrect!');
+      }
+    });
+
+    adminModalClose.addEventListener('click', () => {
+      adminModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      resetAdminForm();
+    });
+
+    // Navigation entre les 3 tabs de l'admin
+    function switchAdminTab(btn, content) {
+      [tabBtnForm, tabBtnList, tabBtnSlider].forEach(b => b.classList.remove('active'));
+      [formTabContent, listTabContent, sliderTabContent].forEach(c => c.style.display = 'none');
+      btn.classList.add('active');
+      content.style.display = 'block';
+    }
+
+    tabBtnForm.addEventListener('click', () => switchAdminTab(tabBtnForm, formTabContent));
+    tabBtnList.addEventListener('click', () => {
+      switchAdminTab(tabBtnList, listTabContent);
+      renderAdminTable();
+    });
+    tabBtnSlider.addEventListener('click', () => {
+      switchAdminTab(tabBtnSlider, sliderTabContent);
+      renderSliderAdminGrid();
+    });
+
+    // A. Upload Photos Bien
+    propertyFileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          currentUploadedImages.push(event.target.result);
+          renderPropertyPreviews();
+        };
+        reader.readAsDataURL(file);
+      });
+      propertyFileInput.value = '';
+    });
+
+    function renderPropertyPreviews() {
+      propertyPreviewContainer.innerHTML = '';
+      currentUploadedImages.forEach((src, idx) => {
+        const box = document.createElement('div');
+        box.className = 'preview-box';
+        box.innerHTML = `
+          <img src="${src}">
+          <button type="button" class="remove-btn" onclick="removeUploadedImage(${idx})">&times;</button>
+        `;
+        propertyPreviewContainer.appendChild(box);
+      });
+    }
+
+    window.removeUploadedImage = function(index) {
+      currentUploadedImages.splice(index, 1);
+      renderPropertyPreviews();
+    };
+
+    // B. Submit Formulaire Bien
+    propForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const editId = document.getElementById('item-id').value;
+
+      if (currentUploadedImages.length === 0) {
+        alert('Veuillez uploader au moins une photo pour le bien.');
+        return;
+      }
+
+      const newItem = {
+        id: editId ? editId : Date.now().toString(),
+        ref: document.getElementById('item-ref').value.trim(),
+        title: document.getElementById('item-title').value.trim(),
+        action: document.getElementById('item-action').value,
+        type: document.getElementById('item-type').value,
+        price: parseFloat(document.getElementById('item-price').value),
+        surface: parseFloat(document.getElementById('item-surface').value),
+        location: document.getElementById('item-location').value.trim(),
+        rooms: document.getElementById('item-rooms').value.trim(),
+        baths: document.getElementById('item-baths').value.trim(),
+        desc: document.getElementById('item-desc').value.trim(),
+        images: [...currentUploadedImages]
+      };
+
+      if (editId) {
+        const index = propertiesList.findIndex(p => p.id.toString() === editId.toString());
+        if (index !== -1) {
+          propertiesList[index] = newItem;
+          alert('Bien mis à jour avec succès !');
+        }
+      } else {
+        propertiesList.unshift(newItem);
+        alert('Nouveau bien ajouté avec succès !');
+      }
+
+      saveProperties(propertiesList);
+      resetAdminForm();
+      tabBtnList.click();
+    });
+
+    function resetAdminForm() {
+      propForm.reset();
+      document.getElementById('item-id').value = '';
+      currentUploadedImages = [];
+      renderPropertyPreviews();
+      btnSaveSubmit.textContent = "Enregistrer l'annonce";
+      btnCancelEdit.style.display = 'none';
+    }
+
+    btnCancelEdit.addEventListener('click', resetAdminForm);
+
+    function renderAdminTable() {
+      adminTableBody.innerHTML = '';
+      propertiesList.forEach(item => {
+        const row = document.createElement('tr');
+        const img = item.images && item.images.length > 0 ? item.images[0] : '';
+
+        row.innerHTML = `
+          <td><img src="${img}" alt="Thumb"></td>
+          <td><strong>${item.ref}</strong></td>
+          <td>${item.title}</td>
+          <td><span style="text-transform:capitalize;">${item.type} (${item.action})</span></td>
+          <td><strong style="color:var(--primary-color)">${item.price.toLocaleString()} TND</strong></td>
+          <td>
+            <button class="btn-table btn-edit" onclick="editProperty('${item.id}')"><i class="fa-solid fa-pen"></i> Modifier</button>
+            <button class="btn-table btn-delete" onclick="deleteProperty('${item.id}')"><i class="fa-solid fa-trash"></i> Supprimer</button>
+          </td>
+        `;
+        adminTableBody.appendChild(row);
+      });
+    }
+
+    window.editProperty = function(id) {
+      const item = propertiesList.find(p => p.id.toString() === id.toString());
+      if (!item) return;
+
+      document.getElementById('item-id').value = item.id;
+      document.getElementById('item-ref').value = item.ref;
+      document.getElementById('item-title').value = item.title;
+      document.getElementById('item-action').value = item.action;
+      document.getElementById('item-type').value = item.type;
+      document.getElementById('item-price').value = item.price;
+      document.getElementById('item-surface').value = item.surface;
+      document.getElementById('item-location').value = item.location || '';
+      document.getElementById('item-rooms').value = item.rooms || '';
+      document.getElementById('item-baths').value = item.baths || '';
+      document.getElementById('item-desc').value = item.desc;
+
+      currentUploadedImages = item.images ? [...item.images] : [];
+      renderPropertyPreviews();
+
+      btnSaveSubmit.textContent = "Mettre à jour le bien";
+      btnCancelEdit.style.display = 'inline-block';
+      switchAdminTab(tabBtnForm, formTabContent);
+    };
+
+    window.deleteProperty = function(id) {
+      if (confirm('Voulez-vous vraiment supprimer ce bien ?')) {
+        propertiesList = propertiesList.filter(p => p.id.toString() !== id.toString());
+        saveProperties(propertiesList);
+      }
+    };
+
+    // C. GESTION PHOTOS SLIDER DANS L'ADMIN (TAB 3)
+    adminSliderFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          heroImages.push(event.target.result);
+          saveHeroImages(heroImages);
+          alert('Photo ajoutée au Slider avec succès !');
+        };
+        reader.readAsDataURL(file);
+      }
+      adminSliderFileInput.value = '';
+    });
+
+    function renderSliderAdminGrid() {
+      sliderPhotosGrid.innerHTML = '';
+      heroImages.forEach((img, idx) => {
+        const card = document.createElement('div');
+        card.className = 'slider-photo-card';
+        card.innerHTML = `
+          <img src="${img}">
+          <button class="btn-del-slide" onclick="deleteSliderPhoto(${idx})">
+            <i class="fa-solid fa-trash"></i> Supprimer
+          </button>
+        `;
+        sliderPhotosGrid.appendChild(card);
+      });
+    }
+
+    window.deleteSliderPhoto = function(index) {
+      if (heroImages.length <= 1) {
+        alert('Il faut garder au moins 1 photo pour le slider !');
+        return;
+      }
+      if (confirm('Voulez-vous vraiment supprimer cette photo du slider ?')) {
+        heroImages.splice(index, 1);
+        saveHeroImages(heroImages);
+      }
+    };
+
+    renderCards();
+  </script>
+</body>
+</html>
